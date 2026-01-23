@@ -74,44 +74,36 @@ This repository serves as both a **learning reference** and a **production-ready
 
 ### 1. GPU & Environment Validation
 
-* Checks CUDA availability and GPU memory
-* Ensures sufficient resources for model fine-tuning
+* Verifies CUDA availability and GPU memory
+* Ensures compatibility for Gemma fine-tuning
 
 ### 2. Dataset Preparation
 
-* Handles raw text related to food content
-* Maps short tags to meaningful labels, such as:
-
-  * Nutrition panels
-  * Ingredient lists
-  * Recipes
-  * Menus
-  * Food & drink items
+* Processes food-related text datasets
+* Converts raw labels into human-readable classes
+* Splits data into training and evaluation sets
 
 ### 3. Prompt Engineering
 
-* Converts raw examples into **LLM-compatible chat formats**
-* Uses system and user roles to guide the model
-* Ensures consistent and structured outputs
+* Builds instruction-style chat prompts
+* Uses system/user roles compatible with Gemma
+* Enforces structured outputs for consistency
 
-### 4. Structured Output Generation
+### 4. Supervised Fine-Tuning (SFT)
 
-* Extracts information into clearly defined fields
-* Example outputs include:
+* Implements **SFTTrainer** from TRL
+* Tokenizes prompts and responses correctly
+* Supports configurable training arguments
 
-  * `food_items`: list of detected food items
-  * `drink_items`: list of detected beverages
+### 5. Model Saving & Hub Integration
 
-### 5. Baseline Inference
+* Saves fine-tuned checkpoints locally
+* Pushes trained model and tokenizer to Hugging Face Hub
 
-* Runs inference using the **base Gemma model**
-* Compares default outputs with expected structured responses
+### 6. Inference & Validation
 
-### 6. Fine-Tuning Pipeline (In Progress)
-
-* Integration with **TRL** for supervised fine-tuning
-* Prepared for instruction-based training
-* Scalable for future reinforcement learning or preference tuning
+* Runs post-training inference on sample inputs
+* Compares fine-tuned outputs against baseline responses
 
 ---
 
@@ -135,9 +127,10 @@ This repository serves as both a **learning reference** and a **production-ready
 * ✅ Dataset formatting
 * ✅ Prompt engineering
 * ✅ Baseline inference
-* 🚧 Fine-tuning loop
-* 🚧 Evaluation metrics
-* 🚧 Model deployment
+* ✅ Supervised fine-tuning using TRL (SFTTrainer)
+* ✅ Model saving and Hugging Face Hub integration
+* 🚧 Evaluation metrics and benchmarking
+* 🚧 Demo & deployment
 
 ---
 
